@@ -1,1 +1,43 @@
 @import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --font-oswald: "Oswald", sans-serif;
+}
+
+body {
+  font-family: var(--font-oswald, "Oswald", sans-serif);
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+
+.font-inter {
+  font-family: var(--font-inter, "Inter", sans-serif);
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ED2B2B;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff4a4a;
+}
+
+/* Firefox support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ED2B2B #1a1a1a;
+}
