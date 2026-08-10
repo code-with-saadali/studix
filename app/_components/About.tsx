@@ -29,7 +29,7 @@ export default function About() {
           </motion.span>
 
           <motion.h2
-            className="mt-3 max-w-6xl text-[52px] font-semibold uppercase leading-[0.9] tracking-[-0.04em] text-[#111] md:text-[72px] lg:text-[90px]"
+            className="mt-3 max-w-6xl text-[42px] font-semibold uppercase leading-[0.9] tracking-[-0.04em] text-[#111] md:text-[72px] lg:text-[90px]"
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"

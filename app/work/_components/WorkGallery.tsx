@@ -75,7 +75,7 @@ export default function WorkGallery() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <span className="inline-flex rounded-full bg-[#EDEDED] px-6 py-2.5 text-[14px] font-bold uppercase tracking-wide text-[#111]">
+            <span className="md:inline-flex rounded-full hidden bg-[#EDEDED] px-6 py-2.5 text-[14px] font-bold uppercase tracking-wide text-[#111]">
               Projects
             </span>
           </motion.div>
