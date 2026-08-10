@@ -122,22 +122,26 @@ export const slideUpStrip: Variants = {
 // Center Reveal Animation
 export const imageReveal: Variants = {
   hidden: {
-    clipPath: "inset(50% 0 50% 0)",
-    scale: 1.08,
+    clipPath: "inset(0% 0 100% 0)",
+    scale: 1.15,
+    opacity: 0.6,
   },
   visible: {
     clipPath: "inset(0% 0 0% 0)",
     scale: 1,
+    opacity: 1,
     transition: {
-      duration: 1,
-      ease: [0.76, 0, 0.24, 1],
       clipPath: {
-        duration: 1,
-        ease: [0.76, 0, 0.24, 1],
+        duration: 1.1,
+        ease: [0.83, 0, 0.17, 1],
       },
       scale: {
-        duration: 1.2,
-        ease: [0.76, 0, 0.24, 1],
+        duration: 1.4,
+        ease: [0.16, 1, 0.3, 1],
+      },
+      opacity: {
+        duration: 0.6,
+        ease: "easeOut",
       },
     },
   },

@@ -1,7 +1,6 @@
 import About from "./_components/About";
 import CtaSection from "./_components/CtaSection";
 import FaqSection from "./_components/FaqSection";
-import Footer from "./_components/Footer";
 import Hero from "./_components/Hero";
 import InstagramSection from "./_components/InstagramSection";
 import Marquee from "./_components/Marquee";
@@ -25,7 +24,6 @@ export default function Home() {
       <FaqSection/>
       <CtaSection/>
       <InstagramSection/>
-      <Footer/>
     </>
   );
 }

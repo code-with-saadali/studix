@@ -42,7 +42,7 @@ const team = [
 
 export default function OurTeam() {
   return (
-    <section className="bg-[#F8F8F8] pb-10">
+    <section className="bg-[#F8F8F8] py-10">
       <div className="mx-auto max-w-362.5 px-6 lg:px-10">
         {/* Badge */}
         <motion.div

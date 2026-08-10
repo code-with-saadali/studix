@@ -3,6 +3,7 @@ import { Oswald, Inter } from "next/font/google";
 import "./globals.css";
 import LenisScroll from "./_components/LenisScroll";
 import Navbar from "./_components/Navbar";
+import Footer from "./_components/Footer";
 
 const oswald = Oswald({
   variable: "--font-oswald",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <LenisScroll>
           <Navbar />
           {children}
+          <Footer/>
         </LenisScroll>
       </body>
     </html>
