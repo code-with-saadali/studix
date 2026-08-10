@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, X } from "lucide-react";
@@ -20,6 +20,8 @@ const socials = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -28,8 +30,44 @@ export default function Navbar() {
     };
   }, [open]);
 
+  // Hide navbar on scroll down, show it again on scroll up
+  useEffect(() => {
+    lastScrollY.current = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Never hide while the menu overlay is open
+      if (open) {
+        setHidden(false);
+        lastScrollY.current = currentScrollY;
+        return;
+      }
+
+      // Ignore tiny jitters near the very top
+      if (currentScrollY < 80) {
+        setHidden(false);
+      } else if (currentScrollY > lastScrollY.current) {
+        // scrolling down
+        setHidden(true);
+      } else {
+        // scrolling up
+        setHidden(false);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [open]);
+
   return (
-    <header className="sticky top-0 z-50 bg-[#101010] text-white">
+    <header
+      className={`sticky top-0 z-50 bg-[#101010] text-white transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+        hidden ? "-translate-y-full" : "translate-y-0"
+      }`}
+    >
       {/* Top bar – stays fixed on top */}
       <div className="flex items-center justify-between px-4 py-4 sm:px-8 sm:py-5 relative z-50 h-[10vh]">
         <Link href="/" className="flex items-start">
