@@ -63,13 +63,20 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header
-      className={`sticky top-0 z-50 bg-[#101010] text-white transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${
-        hidden ? "-translate-y-full" : "translate-y-0"
-      }`}
-    >
-      {/* Top bar – stays fixed on top */}
-      <div className="flex items-center justify-between px-4 py-4 sm:px-8 sm:py-5 relative z-50 h-[10vh]">
+    // NOTE: no transform on this outer <header>. A transform on an ancestor
+    // creates a new containing block for `position: fixed` descendants, which
+    // broke the full-screen menu overlay (it started sizing itself against
+    // the header instead of the viewport). The hide/show transform now lives
+    // only on the inner top-bar wrapper below, so the overlay stays fixed to
+    // the viewport correctly.
+    <header className="sticky top-0 z-50 text-white">
+      {/* Top bar – bg color lives here too, so it slides away together with
+          the content instead of staying pinned while only the text moves */}
+      <div
+        className={`flex items-center justify-between bg-[#101010] px-4 py-4 sm:px-8 sm:py-5 relative z-50 h-[10vh] transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+          hidden ? "-translate-y-full" : "translate-y-0"
+        }`}
+      >
         <Link href="/" className="flex items-start">
           <Image width={65} height={65} src="/logo.avif" alt="logo" />
         </Link>
@@ -164,10 +171,10 @@ export default function Navbar() {
 
             <Link
               href="mailto:hello@studix.com"
-              className="order-1 flex w-full max-w-xs items-center justify-between gap-3 border border-white/30 px-6 py-3 text-base font-semibold uppercase transition-colors duration-300 hover:bg-white hover:text-black sm:order-2 sm:w-62.5"
+              className="group order-1 flex w-full max-w-xs items-center justify-between gap-3 border border-white/30 px-6 py-3 text-base font-semibold uppercase transition-colors duration-300 hover:bg-white hover:text-black sm:order-2 sm:w-62.5"
             >
               Let&apos;s Talk
-              <ArrowUpRight className="h-5 w-5" />
+              <ArrowUpRight className="h-5 w-5 transition-transform duration-300 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:rotate-45" />
             </Link>
 
             <span className="order-3 text-sm font-bold uppercase text-white/80 sm:text-base">
